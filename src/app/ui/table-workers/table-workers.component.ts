@@ -11,7 +11,7 @@ export class TableWorkersComponent implements OnInit {
   @Input() workers: MyWorker[] = [];
 
   @Output() deleteWorker = new EventEmitter<number>();
-
+  @Output() editWorker = new EventEmitter<object>();
   constructor() {}
 
   ngOnInit(): void {}
@@ -19,4 +19,12 @@ export class TableWorkersComponent implements OnInit {
   onDeleteWorker(id: number) {
     this.deleteWorker.emit(id);
   }
+  onEditWorker(worker_edit: object){
+   this.editWorker.emit(worker_edit);
+    
+  }
+ showForm(id){
+   let form = document.getElementById(id);
+   form.classList.toggle("d-none");
+ }
 }

@@ -1,0 +1,21 @@
+<div class="d-none" [id]="id">
+    <input type="hidden" [(ngModel)]="id" />
+    <input type="text" class="form-control" [placeholder]="name" [(ngModel)]="name" />
+
+
+    <input type="text" class="form-control" [placeholder]="surname" [(ngModel)]="surname" />
+
+
+    <select class="custom-select" [(ngModel)]="type">
+                      <option [ngValue]="myWorkerType.programmer">Программист</option>
+                      <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+                      <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+                      <option [ngValue]="myWorkerType.manager">Менеджер</option>
+                    </select>
+
+
+
+
+
+    <button class="btn btn-outline-primary btn-sm" (click)="onEditWorker()">Редактировать</button>
+</div>

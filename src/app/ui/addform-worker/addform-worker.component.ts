@@ -19,10 +19,16 @@ export class AddformWorkerComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddWorker() {
+    if (!this.name || !this.surname || this.name.match(/([0-9])/g) || this.surname.match(/([0-9])/g))
+     alert('Запись не может быть пустой и содержать цифр') 
+    else
     this.addWorker.emit({
       name: this.name,
       surname: this.surname,
       type: this.type,
     });
+    
   }
+ 
 }
+

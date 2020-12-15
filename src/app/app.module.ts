@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { TableWorkersComponent } from './ui/table-workers/table-workers.component';
 import { AddformWorkerComponent } from './ui/addform-worker/addform-worker.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditComponent } from './ui/edit/edit.component';
+
 
 @NgModule({
-  declarations: [AppComponent, TableWorkersComponent, AddformWorkerComponent],
+  declarations: [AppComponent, TableWorkersComponent, AddformWorkerComponent, EditComponent],
   imports: [
     BrowserModule,
     FormsModule,
