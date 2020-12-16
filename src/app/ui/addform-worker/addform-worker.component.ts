@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MyWorkerType, MyWorker } from 'src/app/shared/worker.model';
-
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
 @Component({
   selector: 'app-addform-worker',
   templateUrl: './addform-worker.component.html',
@@ -8,10 +9,18 @@ import { MyWorkerType, MyWorker } from 'src/app/shared/worker.model';
 })
 export class AddformWorkerComponent implements OnInit {
   myWorkerType = MyWorkerType;
-  name: string;
-  surname: string;
-  type = 0;
-
+ public mask = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/]
+  myForm : FormGroup = new FormGroup({
+             
+    "name": new FormControl("",Validators.required),
+    "surname": new FormControl("", [
+                Validators.required, 
+                
+    ]),
+    "type": new FormControl("", Validators.required),
+    "phone": new FormControl("", Validators.required)
+    
+});
   @Output() addWorker = new EventEmitter<MyWorker>();
 
   constructor() {}
@@ -19,13 +28,11 @@ export class AddformWorkerComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddWorker() {
-    if (!this.name || !this.surname || this.name.match(/([0-9])/g) || this.surname.match(/([0-9])/g))
-     alert('Запись не может быть пустой и содержать цифр') 
-    else
     this.addWorker.emit({
-      name: this.name,
-      surname: this.surname,
-      type: this.type,
+      name: this.myForm.controls["name"].value,
+      surname: this.myForm.controls["surname"].value,
+      type: this.myForm.controls["type"].value,
+      phone: this.myForm.controls["phone"].value
     });
     
   }

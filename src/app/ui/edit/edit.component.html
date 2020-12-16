@@ -1,21 +1,39 @@
-<div class="d-none" [id]="id">
-    <input type="hidden" [(ngModel)]="id" />
-    <input type="text" class="form-control" [placeholder]="name" [(ngModel)]="name" />
-
-
-    <input type="text" class="form-control" [placeholder]="surname" [(ngModel)]="surname" />
-
-
-    <select class="custom-select" [(ngModel)]="type">
-                      <option [ngValue]="myWorkerType.programmer">Программист</option>
-                      <option [ngValue]="myWorkerType.designer">Дизайнер</option>
-                      <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
-                      <option [ngValue]="myWorkerType.manager">Менеджер</option>
-                    </select>
+<form [formGroup]="editForm">
+    <div class="d-none " [id]="id">
 
 
 
+        <input type="text" class="form-control" placeholder="Имя" formControlName="name" />
 
 
-    <button class="btn btn-outline-primary btn-sm" (click)="onEditWorker()">Редактировать</button>
+        <input type="text" class="form-control" placeholder="Фамилия" formControlName="surname" />
+
+
+        <input type="tel" class="form-control" placeholder="Телефон" formControlName="phone" [textMask]="{mask: mask}" />
+
+
+        <select formControlName="type" class="custom-select">
+          <option [ngValue]="myWorkerType.programmer" >Программист</option>
+          <option [ngValue]="myWorkerType.designer">Дизайнер</option>
+          <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
+          <option [ngValue]="myWorkerType.manager">Менеджер</option>
+  </select>
+
+        <input type="hidden" [(ngModel)]="id" [ngModelOptions]="{standalone: true}" />
+
+
+        <button [disabled]="editForm.controls['name'].invalid || editForm.controls['surname'].invalid || editForm.controls['phone'].invalid || editForm.controls['type'].invalid" class="btn btn-outline-primary btn-sm" (click)="onEditWorker()">Редактировать</button>
+    </div>
+</form>
+<div class="alert alert-danger" *ngIf="editForm.controls['name'].invalid && editForm.controls['surname'].touched">
+    Не указано имя
+</div>
+<div class="alert alert-danger" *ngIf="editForm.controls['surname'].invalid && editForm.controls['surname'].touched">
+    Не указана фамилия
+</div>
+<div class="alert alert-danger" *ngIf="editForm.controls['phone'].invalid && editForm.controls['phone'].touched">
+    Не указан телефон
+</div>
+<div class="alert alert-danger" *ngIf="editForm.controls['type'].invalid && editForm.controls['type'].touched">
+    Не указан тип сотрудника
 </div>

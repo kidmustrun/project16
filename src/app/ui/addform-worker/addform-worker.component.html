@@ -1,32 +1,43 @@
-<div class="row mb-3">
-  <div class="col-12">
-    <h5>Добавить сотрудника</h5>
-  </div>
-  <div class="col-4">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Имя"
-      [(ngModel)]="name"
-    />
-  </div>
-  <div class="col-4">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Фамилия"
-      [(ngModel)]="surname"
-    />
-  </div>
-  <div class="col-4">
-    <select class="custom-select" [(ngModel)]="type">
-      <option [ngValue]="myWorkerType.programmer">Программист</option>
+<form [formGroup]="myForm">
+    <div class="row mb-3">
+        <div class="col-12">
+            <h5>Добавить сотрудника</h5>
+        </div>
+
+        <div class="col-3">
+            <input type="text" class="form-control" placeholder="Имя" formControlName="name" />
+
+        </div>
+
+        <div class="col-3">
+            <input type="text" class="form-control" placeholder="Фамилия" formControlName="surname" />
+        </div>
+        <div class="col-3">
+            <input type="tel" class="form-control" placeholder="Телефон" formControlName="phone" [textMask]="{mask: mask}" />
+        </div>
+        <div class="col-3">
+            <select formControlName="type" class="custom-select">
+      <option [ngValue]="myWorkerType.programmer" >Программист</option>
       <option [ngValue]="myWorkerType.designer">Дизайнер</option>
       <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
       <option [ngValue]="myWorkerType.manager">Менеджер</option>
     </select>
-  </div>
-  <div class="col-12 mt-1">
-    <button class="btn btn-outline-primary btn-sm" (click)="onAddWorker()">Добавить</button>
-  </div>
+        </div>
+        <div class="col-12 mt-1">
+            <button [disabled]="myForm.controls['name'].invalid || myForm.controls['surname'].invalid || myForm.controls['phone'].invalid || myForm.controls['type'].invalid" class="btn btn-outline-primary btn-sm" (click)="onAddWorker()">Добавить</button>
+        </div>
+
+    </div>
+</form>
+<div class="alert alert-danger" *ngIf="myForm.controls['name'].invalid && myForm.controls['surname'].touched">
+    Не указано имя
+</div>
+<div class="alert alert-danger" *ngIf="myForm.controls['surname'].invalid && myForm.controls['surname'].touched">
+    Не указана фамилия
+</div>
+<div class="alert alert-danger" *ngIf="myForm.controls['phone'].invalid && myForm.controls['phone'].touched">
+    Не указан телефон
+</div>
+<div class="alert alert-danger" *ngIf="myForm.controls['type'].invalid && myForm.controls['type'].touched">
+    Не указан тип сотрудника
 </div>
