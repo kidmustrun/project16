@@ -18,7 +18,7 @@ export class AddformWorkerComponent implements OnInit {
                 
     ]),
     "type": new FormControl("", Validators.required),
-    "phone": new FormControl("", Validators.required)
+    "phone": new FormControl("",[ Validators.required, Validators.pattern(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/)])
     
 });
   @Output() addWorker = new EventEmitter<MyWorker>();
