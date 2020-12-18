@@ -13,7 +13,7 @@
             <input type="text" class="form-control" placeholder="Фамилия" formControlName="surname" />
         </div>
         <div class="col-3">
-            <input type="tel" class="form-control" placeholder="Телефон" formControlName="phone" [textMask]="{mask: mask}" />
+            <input type="tel" pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11}(\s*)?$" class="form-control" placeholder="Телефон" formControlName="phone" [textMask]="{mask: mask}" />
         </div>
         <div class="col-3">
             <select formControlName="type" class="custom-select">
