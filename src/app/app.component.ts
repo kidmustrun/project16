@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatebaseService } from 'src/app/shared/datebase.service';
 
 import {
@@ -16,6 +16,7 @@ export class AppComponent {
   title = 'Список сотрудников';
   workers: MyWorker[];
   myWorkerType = MyWorkerType;
+  @Input() searchStr: string;
   constructor(private DatebaseService: DatebaseService){}
   ngOnInit(){
          this.DatebaseService.getData().subscribe((data:MyWorker[]) => this.workers=data);

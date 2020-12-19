@@ -12,8 +12,9 @@ import { EditComponent } from './ui/edit/edit.component';
 import { ReactiveFormsModule }   from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { HttpClientModule }   from '@angular/common/http';
+import { FilterPipe } from './pipes/filter.pipe';
 @NgModule({
-  declarations: [AppComponent, TableWorkersComponent, AddformWorkerComponent, EditComponent],
+  declarations: [AppComponent, TableWorkersComponent, AddformWorkerComponent, EditComponent, FilterPipe],
   imports: [
     BrowserModule,
     FormsModule,

@@ -9,7 +9,7 @@ import { MyWorker } from 'src/app/shared/worker.model';
 export class TableWorkersComponent implements OnInit {
   @Input() title: string;
   @Input() workers: MyWorker[] = [];
-
+  @Input() searchStr: string;
   @Output() deleteWorker = new EventEmitter<number>();
   @Output() editWorker = new EventEmitter<object>();
   constructor() {}

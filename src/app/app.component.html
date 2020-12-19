@@ -5,10 +5,11 @@
         </div>
     </div>
     <app-addform-worker (addWorker)="onAddWorker($event)"></app-addform-worker>
-    <app-table-workers *ngIf="workers" [title]="'Программисты'" [workers]="getByType(myWorkerType.programmer)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)"></app-table-workers>
-    <app-table-workers *ngIf="workers" [title]="'Дизайнеры'" [workers]="getByType(myWorkerType.designer)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)"></app-table-workers>
-    <app-table-workers *ngIf="workers" [title]="'Рекламщики'" [workers]="getByType(myWorkerType.copywriter)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)"></app-table-workers>
-    <app-table-workers *ngIf="workers" [title]="'Менеджеры'" [workers]="getByType(myWorkerType.manager)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)"></app-table-workers>
+    <input type="text" class="form-control" [(ngModel)]="searchStr">
+    <app-table-workers *ngIf="workers" [title]="'Программисты'" [workers]="getByType(myWorkerType.programmer)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
+    <app-table-workers *ngIf="workers" [title]="'Дизайнеры'" [workers]="getByType(myWorkerType.designer)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
+    <app-table-workers *ngIf="workers" [title]="'Рекламщики'" [workers]="getByType(myWorkerType.copywriter)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
+    <app-table-workers *ngIf="workers" [title]="'Менеджеры'" [workers]="getByType(myWorkerType.manager)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
     <div *ngIf="!workers">
         <div class="cssload-thecube">
             <div class="cssload-cube cssload-c1"></div>
