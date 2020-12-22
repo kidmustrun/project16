@@ -3,27 +3,35 @@
     <div class="row">
         <div class="col-12">
             <h5>{{ title }}</h5>
+            <button class="btn btn-outline-success" (click)='reverseSortID()'>Сортировать по ID</button>
+            <button class="btn btn-outline-success" (click)='reverseSortBirthday()'>Сортировать по дате рождения</button>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Имя</th>
                         <th scope="col">Фамилия</th>
+                        <th scope="col">Отчество</th>
                         <th scope="col">Телефон</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Дата рождения</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let worker of workers | filter:searchStr ">
+                    <tr *ngFor="let worker of workers | filter:searchStr |filterByID:sorting:direction">
                         <th scope="row">{{ worker.id }}</th>
                         <td>{{ worker.name }}</td>
                         <td>{{ worker.surname }}</td>
+                        <td>{{ worker.middlename }}</td>
                         <td>{{ worker.phone }}</td>
+                        <td>{{ worker.email }}</td>
+                        <td>{{ worker.birthday }}</td>
                         <td><button type="button" class="btn btn-outline-primary" (click)="showForm(worker.id)">
                             Панель редактирования
                           </button>
-                            <app-edit (editWorker)="onEditWorker($event)" [id]="worker.id" [name]="worker.name" [surname]="worker.surname" [phone]="worker.phone"></app-edit>
+                            <app-edit (firstDeleteWorker)="onDeleteWorker($event)" (editWorker)="onEditWorker($event)" [id]="worker.id" [name]="worker.name" [surname]="worker.surname" [middlename]="worker.middlename" [phone]="worker.phone" [birthday]="worker.birthday" [email]="worker.email"></app-edit>
                         </td>
                         <td>
                             <button class="btn btn-outline-danger btn-sm" (click)="onDeleteWorker(worker.id)">

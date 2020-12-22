@@ -1,0 +1,16 @@
+<a class="nav-item nav-link" [routerLink]="'/about'" routerLinkActiv e="active">Информационная страница</a>
+<app-addform-worker (addWorker)="onAddWorker($event)"></app-addform-worker>
+<input type="text" class="form-control" [(ngModel)]="searchStr" placeholder="Поиск">
+<app-table-workers *ngIf="workers" [title]="'IT-отдел'" [workers]="getByType(myWorkerType.programmer)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
+<app-table-workers *ngIf="workers" [title]="'Отдел продаж'" [workers]="getByType(myWorkerType.finance)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
+<app-table-workers *ngIf="workers" [title]="'Отдел доставки'" [workers]="getByType(myWorkerType.delivery)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
+<app-table-workers *ngIf="workers" [title]="'Юридический отдел'" [workers]="getByType(myWorkerType.law)" (deleteWorker)="onDeleteById($event)" (editWorker)="onEditWorker($event)" [searchStr]="searchStr"></app-table-workers>
+<div *ngIf="!workers">
+    <div class="cssload-thecube">
+        <div class="cssload-cube cssload-c1"></div>
+        <div class="cssload-cube cssload-c2"></div>
+        <div class="cssload-cube cssload-c4"></div>
+        <div class="cssload-cube cssload-c3"></div>
+    </div>
+</div>
+<hr />

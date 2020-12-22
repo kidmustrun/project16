@@ -13,18 +13,28 @@
             <input type="text" class="form-control" placeholder="Фамилия" formControlName="surname" />
         </div>
         <div class="col-3">
+            <input type="text" class="form-control" placeholder="Отчество (необязательно)" formControlName="middlename" />
+        </div>
+        <div class="col-3">
             <input type="tel" pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){11}(\s*)?$" class="form-control" placeholder="Телефон" formControlName="phone" [textMask]="{mask: mask}" />
         </div>
         <div class="col-3">
+            <input type="email" class="form-control" placeholder="E-mail" formControlName="email" />
+        </div>
+        <div class="col-3">
+            <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" placeholder="Дата рождения" formControlName="birthday" [max]="getToday()" />
+        </div>
+        <div class="col-3">
             <select formControlName="type" class="custom-select">
-      <option [ngValue]="myWorkerType.programmer" >Программист</option>
-      <option [ngValue]="myWorkerType.designer">Дизайнер</option>
-      <option [ngValue]="myWorkerType.copywriter">Рекламщик</option>
-      <option [ngValue]="myWorkerType.manager">Менеджер</option>
+      <option [ngValue]="myWorkerType.programmer" >IT отдел</option>
+      <option [ngValue]="myWorkerType.finance">Отдел продаж</option>
+      <option [ngValue]="myWorkerType.delivery">Отдел доставки</option>
+      <option [ngValue]="myWorkerType.law">Юридический отдел</option>
     </select>
         </div>
         <div class="col-12 mt-1">
-            <button [disabled]="myForm.controls['name'].invalid || myForm.controls['surname'].invalid || myForm.controls['phone'].invalid || myForm.controls['type'].invalid" class="btn btn-outline-primary btn-sm" (click)="onAddWorker()">Добавить</button>
+            <button [disabled]="myForm.controls['name'].invalid || myForm.controls['surname'].invalid || myForm.controls['phone'].invalid || myForm.controls['type'].invalid || myForm.controls['birthday'].invalid || myForm.controls['email'].invalid" class="btn btn-outline-primary btn-sm"
+                (click)="onAddWorker()">Добавить</button>
         </div>
 
     </div>
@@ -40,4 +50,10 @@
 </div>
 <div class="alert alert-danger" *ngIf="myForm.controls['type'].invalid && myForm.controls['type'].touched">
     Не указан тип сотрудника
+</div>
+<div class="alert alert-danger" *ngIf="myForm.controls['birthday'].invalid && myForm.controls['birthday'].touched">
+    Неправильная дата рождения
+</div>
+<div class="alert alert-danger" *ngIf="myForm.controls['email'].invalid && myForm.controls['email'].touched">
+    Неверный e-mail
 </div>

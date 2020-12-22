@@ -1,32 +1,54 @@
 {
   "workers": [
     {
-      "id": 2,
-      "name": "Петр",
-      "surname": "Петров",
+      "id": 9,
+      "name": "Александр",
+      "surname": "Александров",
+      "middlename": "Александрович",
       "type": 1,
-      "phone": "89206474002"
+      "phone": "+7 (920) 647-40-08",
+      "email": "parakerta2@mail.ru",
+      "birthday": "1987-10-24"
     },
     {
-      "id": 3,
-      "name": "Сидор",
-      "surname": "Сидоров",
-      "type": 2,
-      "phone": "89206474003"
-    },
-    {
-      "id": 4,
-      "name": "Борис",
-      "surname": "Борисов",
-      "type": 3,
-      "phone": "+7 (920) 647-40-04"
-    },
-    {
-      "id": 5,
       "name": "Ирина",
       "surname": "Громова",
+      "middlename": "Павловна",
       "type": 0,
-      "phone": "+7 (920) 647-40-04"
+      "phone": "+7 (920) 647-40-04",
+      "birthday": "2002-01-13",
+      "email": "parakerta@mail.ru",
+      "id": 10
+    },
+    {
+      "name": "Борис",
+      "surname": "Борисов",
+      "middlename": "",
+      "type": 0,
+      "phone": "+7 (920) 647-40-02",
+      "birthday": "1992-07-19",
+      "email": "parakerta2@mail.ru",
+      "id": 11
+    },
+    {
+      "name": "Сидор",
+      "surname": "Сидоров",
+      "middlename": "Сидорович",
+      "type": 0,
+      "phone": "+7 (920) 647-40-05",
+      "birthday": "2012-07-18",
+      "email": "paraker5ta@mail.ru",
+      "id": 12
+    },
+    {
+      "name": "Иван",
+      "surname": "Иванов",
+      "middlename": "",
+      "type": 1,
+      "phone": "+7 (920) 647-40-05",
+      "birthday": "1986-06-11",
+      "email": "parak3erta2@mail.ru",
+      "id": 13
     }
   ]
 }

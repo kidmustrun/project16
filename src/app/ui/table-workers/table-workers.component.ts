@@ -14,11 +14,31 @@ export class TableWorkersComponent implements OnInit {
   @Output() editWorker = new EventEmitter<object>();
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
+  direction=0;
+  sorting= 'id';
+reverseSortID(){
+  this.sorting = 'id';
+ if(this.direction)
+ this.direction = 0;
+  else this.direction = 1;
+  
+}
+reverseSortBirthday(){
+  this.sorting = 'birthday';
+  if(this.direction)
+  this.direction = 0
+    else this.direction = 1;
+  
+}
 
   onDeleteWorker(id: number) {
     this.deleteWorker.emit(id);
+    
   }
+  
   onEditWorker(worker_edit: object){
    this.editWorker.emit(worker_edit);
     
@@ -26,5 +46,6 @@ export class TableWorkersComponent implements OnInit {
  showForm(id){
    let form = document.getElementById(id);
    form.classList.toggle("d-none");
+  
  }
 }
